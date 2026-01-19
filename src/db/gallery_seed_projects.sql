@@ -1,8 +1,8 @@
 -- =====================================================
--- IMPORT MIGRATED GALLERY PROJECTS
+-- GALLERY SEED DATA: Initial Projects
 -- Run this AFTER:
 -- 1. Running gallery_schema.sql to create the tables
--- 2. Uploading the 3 PNG images to the project_pngs bucket
+-- 2. Uploading the PNG images to the project_pngs bucket
 -- =====================================================
 
 INSERT INTO projects (id, created_at, creator_name, belt, title, description, png_path, status, makecode_url, embed_url, error_message, views, featured, location)

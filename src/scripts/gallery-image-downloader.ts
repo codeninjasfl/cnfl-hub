@@ -1,32 +1,31 @@
 /**
- * Migration Script: Download images from old Supabase and prepare for upload to new one
+ * Gallery Image Downloader
  * 
- * Run with: npx ts-node --esm src/scripts/migrate-gallery-images.ts
+ * Run with: npx ts-node --esm src/scripts/gallery-image-downloader.ts
  * 
  * This script:
- * 1. Connects to the OLD gallery Supabase project
+ * 1. Connects to the source gallery Supabase project
  * 2. Fetches all projects and their image paths
  * 3. Downloads images locally
- * 4. You can then manually upload them to the new bucket, 
- *    or extend this script to upload automatically
+ * 4. You can then upload them to the destination bucket
  */
 
 import { createClient } from '@supabase/supabase-js';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// OLD Gallery Supabase credentials
+// Source Gallery Supabase credentials
 const OLD_SUPABASE_URL = 'https://fmctxftcjtgxvedching.supabase.co';
 const OLD_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtY3R4ZnRjanRneHZlZGNoaW5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc5OTE4MzYsImV4cCI6MjA4MzU2NzgzNn0.R-z616-Aci8hjx7P-ZoXOhrxxxI2x0FZqthjQCZ0UFo';
 
-// NEW Session Reporting Supabase credentials
+// Destination Session Reporting Supabase credentials
 const NEW_SUPABASE_URL = 'https://olgmanfzkvjcmbzjkdvk.supabase.co';
 const NEW_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZ21hbmZ6a3ZqY21iemprZHZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1MTEzMzgsImV4cCI6MjA4NDA4NzMzOH0.b9VcftTBXSo-RAIzZHo8PUCngidrEjZWFdqaXQRsqnQ';
 
 const oldSupabase = createClient(OLD_SUPABASE_URL, OLD_SUPABASE_ANON_KEY);
 const newSupabase = createClient(NEW_SUPABASE_URL, NEW_SUPABASE_ANON_KEY);
 
-const DOWNLOAD_DIR = './migrated_gallery_images';
+const DOWNLOAD_DIR = './downloaded_gallery_images';
 
 async function main() {
     console.log('🔄 Starting Gallery Migration...\n');
@@ -104,10 +103,10 @@ async function main() {
     fs.writeFileSync(exportPath, JSON.stringify(projects, null, 2));
     console.log(`\n📄 Exported project data to ${exportPath}`);
 
-    console.log('\n✅ Migration download complete!');
-    console.log('\n📝 Next steps:');
-    console.log('   1. Go to your NEW Supabase project > Storage > project_pngs');
-    console.log('   2. Upload the images from ./migrated_gallery_images/');
+    console.log('\\n✅ Image download complete!');
+    console.log('\\n📝 Next steps:');
+    console.log('   1. Go to your destination Supabase project > Storage > project_pngs');
+    console.log('   2. Upload the images from ./downloaded_gallery_images/');
     console.log('   3. Run the SQL in gallery_schema.sql to create the tables');
     console.log('   4. Import the project records from projects_export.json');
 }

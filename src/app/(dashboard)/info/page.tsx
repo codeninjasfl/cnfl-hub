@@ -25,11 +25,15 @@ export default async function DojoInfoPage() {
 
     // Get current user's dojo and role
     const { data: { user } } = await supabase.auth.getUser()
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('assigned_dojo, role, full_name')
         .eq('id', user?.id)
         .single()
+
+    if (profileError) {
+        console.error('[INFO_PAGE] Profile fetch error:', profileError.message, profileError.code, 'User ID:', user?.id)
+    }
 
     const userDojo = profile?.assigned_dojo
     const userRole = profile?.role

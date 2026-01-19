@@ -19,11 +19,15 @@ export default async function DashboardLayout({
     }
 
     // Fetch role and profile info
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('role, full_name, email')
         .eq('id', user.id)
         .single()
+
+    if (profileError) {
+        console.error('[DASHBOARD_LAYOUT] Profile fetch error:', profileError.message, profileError.code)
+    }
 
     const role = profile?.role || 'parent'
 

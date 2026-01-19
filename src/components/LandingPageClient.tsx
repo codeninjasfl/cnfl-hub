@@ -1,9 +1,39 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import { LucideTrophy, LucideLayoutDashboard, LucideUsers, LucideChevronDown, LucideMapPin, LucidePhone, LucideQuote } from 'lucide-react'
 
+// Lightweight scroll-reveal: CSS-only with single shared observer
+// No state updates during scroll = no React re-renders = smooth performance
+function useScrollReveal() {
+    const observerRef = useRef<IntersectionObserver | null>(null)
+
+    useEffect(() => {
+        observerRef.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed')
+                        observerRef.current?.unobserve(entry.target) // One-time reveal
+                    }
+                })
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        )
+
+        // Observe all elements with scroll-reveal class
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+            observerRef.current?.observe(el)
+        })
+
+        return () => observerRef.current?.disconnect()
+    }, [])
+}
+
 export default function LandingPageClient() {
+    useScrollReveal()
+
     return (
         <div className="min-h-screen flex flex-col">
             {/* Navigation */}
@@ -24,7 +54,7 @@ export default function LandingPageClient() {
                 </div>
             </nav>
 
-            {/* Hero - Full viewport height so users must scroll to see more */}
+            {/* Hero - Loads immediately */}
             <div className="flex-1 flex flex-col items-center justify-center text-center px-4 py-6 md:p-8">
                 <div className="max-w-4xl mx-auto space-y-4 md:space-y-8">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md text-xs md:text-sm font-semibold animate-fade-in" style={{ animationDelay: '0.1s' }}>
@@ -57,8 +87,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Features Grid */}
-            <div id="features" className="bg-white py-24 scroll-mt-8">
+            {/* Features Grid - Scroll reveal */}
+            <div id="features" className="bg-white py-24 scroll-mt-8 scroll-reveal">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-bold uppercase tracking-wider mb-4 hover:scale-105 transition-transform cursor-default">Why Parents Love Us</span>
@@ -101,8 +131,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* How It Works */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 py-24">
+            {/* How It Works - Scroll reveal */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 py-24 scroll-reveal">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 rounded-full bg-white text-blue-700 text-sm font-bold uppercase tracking-wider mb-4 shadow-sm">Simple Setup</span>
@@ -127,8 +157,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Locations */}
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-24">
+            {/* Locations - Scroll reveal */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-24 scroll-reveal">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-bold uppercase tracking-wider mb-4">Our Dojos</span>
@@ -162,8 +192,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Belt System Preview */}
-            <div className="bg-white py-24">
+            {/* Belt System Preview - Scroll reveal */}
+            <div className="bg-white py-24 scroll-reveal">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 text-sm font-bold uppercase tracking-wider mb-4 hover:scale-105 transition-transform cursor-default">The Journey</span>
@@ -191,8 +221,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Testimonial / Quote */}
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 py-24 overflow-hidden">
+            {/* Testimonial / Quote - Scroll reveal */}
+            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 py-24 overflow-hidden scroll-reveal">
                 <div className="container mx-auto px-6 text-center">
                     <div className="max-w-3xl mx-auto">
                         <LucideQuote className="h-12 w-12 text-white/30 mx-auto mb-8" />
@@ -206,8 +236,8 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Final CTA */}
-            <div className="bg-white py-24">
+            {/* Final CTA - Scroll reveal */}
+            <div className="bg-white py-24 scroll-reveal">
                 <div className="container mx-auto px-6 text-center">
                     <h2 className="text-4xl md:text-5xl font-black text-[var(--ink)] tracking-tight mb-6">Ready to Get Started?</h2>
                     <p className="text-[var(--muted)] text-lg max-w-2xl mx-auto mb-10">
@@ -224,7 +254,7 @@ export default function LandingPageClient() {
                 </div>
             </div>
 
-            {/* Footer - Light version */}
+            {/* Footer */}
             <footer className="bg-gray-50 border-t border-gray-200 py-12">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6">

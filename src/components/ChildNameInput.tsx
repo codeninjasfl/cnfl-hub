@@ -96,7 +96,7 @@ export default function ChildNameInput({ index, location, onStudentSelect }: Chi
 
     return (
         <div ref={containerRef} className="relative flex items-center gap-2">
-            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--brand)] text-white flex items-center justify-center text-xs font-bold">
+            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold border border-white/30">
                 {index + 1}
             </div>
 
@@ -110,8 +110,8 @@ export default function ChildNameInput({ index, location, onStudentSelect }: Chi
                     onFocus={handleFocus}
                     required
                     autoComplete="off"
-                    className={`block w-full rounded-md border-0 py-1.5 pr-8 text-gray-900 shadow-sm ring-1 ring-inset ${selectedStudent ? 'ring-green-400 bg-green-50' : 'ring-gray-300'
-                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--brand)] sm:text-sm sm:leading-6 px-3`}
+                    className={`block w-full rounded-xl border-0 py-3 px-4 pr-10 text-gray-900 shadow-lg ring-1 ring-inset ${selectedStudent ? 'ring-green-400 bg-green-50' : 'ring-white/30 bg-white/95 backdrop-blur-sm'
+                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-white text-sm`}
                     placeholder={`Child ${index + 1} First Name`}
                 />
 

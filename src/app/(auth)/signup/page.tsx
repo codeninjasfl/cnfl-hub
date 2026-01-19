@@ -24,28 +24,28 @@ export default function SignupPage() {
     }
 
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 animate-in fade-in" style={{ background: 'linear-gradient(180deg, var(--bg1), var(--bg2))' }}>
-            <div className="cn-card w-full max-w-md space-y-8 p-8 border-t-4 border-[var(--brand)] animate-in slide-in-up delay-100">
+        <div className="flex min-h-screen flex-col items-center justify-center px-4 py-8 sm:px-6 lg:px-8 animate-in fade-in" style={{ background: 'linear-gradient(180deg, var(--bg1), var(--bg2))' }}>
+            <div className="w-full max-w-md space-y-6 p-6 sm:p-8 animate-in slide-in-up delay-100">
                 <div className="text-center flex flex-col items-center">
                     <Link href="/">
                         <img
                             src="https://www.codeninjas.com/hubfs/Group%201.svg"
                             alt="Code Ninjas"
-                            className="h-12 w-auto mb-4 hover:scale-105 transition-transform"
+                            className="h-10 sm:h-12 w-auto mb-4 hover:scale-105 transition-transform"
                         />
                     </Link>
-                    <h2 className="text-2xl font-extrabold text-[var(--foreground)] uppercase tracking-tight animate-in slide-in-up delay-150">
+                    <h2 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight animate-in slide-in-up delay-150">
                         Create Parent Account
                     </h2>
-                    <p className="mt-2 text-sm text-[var(--muted)] animate-in slide-in-up delay-200">
+                    <p className="mt-2 text-sm text-white/80 animate-in slide-in-up delay-200">
                         Join to track your ninja's progress
                     </p>
                 </div>
 
-                <form action={formAction} className="mt-8 space-y-6 animate-in slide-in-up delay-300">
-                    <div className="space-y-4 rounded-md shadow-sm">
+                <form action={formAction} className="mt-6 space-y-5 animate-in slide-in-up delay-300">
+                    <div className="space-y-4">
                         <div>
-                            <label htmlFor="fullName" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="fullName" className="block text-sm font-semibold leading-6 text-white">
                                 Parent Full Name
                             </label>
                             <div className="mt-1">
@@ -54,14 +54,14 @@ export default function SignupPage() {
                                     name="fullName"
                                     type="text"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--brand)] sm:text-sm sm:leading-6 px-3"
+                                    className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 shadow-lg ring-1 ring-inset ring-white/30 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-white text-sm bg-white/95 backdrop-blur-sm"
                                     placeholder="John Doe"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-white">
                                 Email address
                             </label>
                             <div className="mt-1">
@@ -71,14 +71,14 @@ export default function SignupPage() {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--brand)] sm:text-sm sm:leading-6 px-3"
+                                    className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 shadow-lg ring-1 ring-inset ring-white/30 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-white text-sm bg-white/95 backdrop-blur-sm"
                                     placeholder="name@example.com"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="password" className="block text-sm font-semibold leading-6 text-white">
                                 Password
                             </label>
                             <div className="mt-1">
@@ -88,14 +88,14 @@ export default function SignupPage() {
                                     type="password"
                                     autoComplete="new-password"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[var(--brand)] sm:text-sm sm:leading-6 px-3"
+                                    className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 shadow-lg ring-1 ring-inset ring-white/30 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-white text-sm bg-white/95 backdrop-blur-sm"
                                     placeholder="••••••••"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="location" className="block text-sm font-semibold leading-6 text-white">
                                 Dojo Location
                             </label>
                             <div className="mt-1">
@@ -105,7 +105,7 @@ export default function SignupPage() {
                                     required
                                     value={location}
                                     onChange={(e) => setLocation(e.target.value)}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[var(--brand)] sm:text-sm sm:leading-6 px-3 bg-white"
+                                    className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 shadow-lg ring-1 ring-inset ring-white/30 focus:ring-2 focus:ring-inset focus:ring-white text-sm bg-white/95 backdrop-blur-sm"
                                 >
                                     <option value="">Select your dojo...</option>
                                     <option value="Cooper City">Cooper City</option>
@@ -116,11 +116,11 @@ export default function SignupPage() {
                         </div>
 
                         {/* Children Section */}
-                        <div className="pt-4 border-t border-gray-200">
+                        <div className="pt-4 border-t border-white/20">
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center gap-2">
-                                    <LucideUsers className="h-5 w-5 text-[var(--brand)]" />
-                                    <label className="block text-sm font-medium leading-6 text-gray-900">
+                                    <LucideUsers className="h-5 w-5 text-white" />
+                                    <label className="block text-sm font-semibold leading-6 text-white">
                                         Your Children ({childCount})
                                     </label>
                                 </div>
@@ -153,7 +153,7 @@ export default function SignupPage() {
                                     <ChildNameInput key={i} index={i} location={location} />
                                 ))}
                             </div>
-                            <p className="mt-2 text-xs text-gray-500">
+                            <p className="mt-2 text-xs text-white/70">
                                 Start typing to search for existing ninjas, or enter a new name.
                             </p>
                         </div>
@@ -173,12 +173,12 @@ export default function SignupPage() {
                                 name="terms"
                                 type="checkbox"
                                 required
-                                className="h-4 w-4 rounded border-gray-300 text-[var(--brand)] focus:ring-[var(--brand)]"
+                                className="h-4 w-4 rounded border-white/30 text-white focus:ring-white bg-white/20"
                             />
                         </div>
                         <div className="ml-3 text-sm">
-                            <label htmlFor="terms" className="text-gray-500">
-                                I agree to the <Link href="/terms" className="font-semibold text-[var(--brand)] hover:underline" target="_blank">Terms of Service</Link> and <Link href="/privacy" className="font-semibold text-[var(--brand)] hover:underline" target="_blank">Privacy Policy</Link>
+                            <label htmlFor="terms" className="text-white/80">
+                                I agree to the <Link href="/terms" className="font-semibold text-white hover:underline" target="_blank">Terms of Service</Link> and <Link href="/privacy" className="font-semibold text-white hover:underline" target="_blank">Privacy Policy</Link>
                             </label>
                         </div>
                     </div>
@@ -187,14 +187,14 @@ export default function SignupPage() {
                         <button
                             type="submit"
                             disabled={isPending}
-                            className="flex w-full justify-center px-5 py-3 rounded-xl bg-[var(--brand)] text-white font-bold shadow-lg shadow-blue-600/30 hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex w-full justify-center px-5 py-3.5 rounded-xl bg-white text-[var(--brand)] font-bold text-base shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isPending ? 'Creating Account...' : 'Start Tracking'}
                         </button>
 
-                        <p className="mt-4 text-center text-sm text-gray-500">
+                        <p className="mt-4 text-center text-sm text-white/80">
                             Already have an account?{' '}
-                            <Link href="/login" className="font-semibold leading-6 text-[var(--brand)] hover:text-blue-500">
+                            <Link href="/login" className="font-semibold leading-6 text-white hover:underline">
                                 Sign in here
                             </Link>
                         </p>

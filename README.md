@@ -1,4 +1,4 @@
-# 🥷 Code Ninjas Session Reporting & Management
+# 🥷 Code Ninjas Parent Hub
 
 A modern web application for Code Ninjas franchises to manage student sessions, track progress, and facilitate communication between Senseis, Directors, and Parents.
 

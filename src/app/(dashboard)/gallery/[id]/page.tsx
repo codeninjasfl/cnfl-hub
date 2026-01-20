@@ -439,8 +439,9 @@ export default function ProjectDetailPage() {
                                         ⚠️ Having trouble loading?
                                     </p>
                                     <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', lineHeight: '1.5' }}>
-                                        Ad blockers and privacy extensions can sometimes block game content.
-                                        Try <strong style={{ color: '#fbbf24' }}>disabling your ad blocker</strong> for this site and refresh the page.
+                                        Ad blockers and privacy extensions can block game content.
+                                        For example, <strong style={{ color: '#fbbf24' }}>Brave&apos;s Shield</strong> can prevent games from loading.
+                                        Try disabling your ad blocker or shields for this site and refresh the page.
                                     </p>
                                 </div>
                                 <button onClick={reloadIframe} className="btn" style={{ marginTop: '8px' }}>

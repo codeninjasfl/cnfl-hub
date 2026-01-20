@@ -113,7 +113,6 @@ npm run dev
 | **Sensei** | Create sessions, manage students, view news |
 | **Director** | Full dojo access, staff management, analytics |
 | **Franchise Owner** | Multi-dojo access, global oversight |
-| **Admin** | Full system access, user management |
 
 ## 📜 License
 
